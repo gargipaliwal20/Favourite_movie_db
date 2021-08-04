@@ -20,9 +20,20 @@ for row in cursor:
    print("Director = ", row[2])
    print("Year_of_release = ", row[3], "\n")
 
-a= input("Enter actor name: ")
-j=cr.execute("select * from movies where actor='"+a+"'")
-for data in j:
-    print(data[0])
+a= input("Enter your choice: ")
+if a=='actor':
+    c=input("Actor Name:")
+    j=cr.execute("select * from movies where actor='"+c+"'")
+    for data in j:
+        print(data[0])
+elif a=='actress':
+    d = input("Actress Name:")
+    k = cr.execute("select * from movies where actress='" +d+ "'")
+    for data in k:
+        print(data[0])
+elif a=='director':
+    e = input("Director Name: ")
+    l = cr.execute("select * from movies where director='" +e+ "'")
+    for data in l:
+        print(data[0])
 db.close()
-
