@@ -20,7 +20,7 @@ for row in cursor:
    print("Director = ", row[2])
    print("Year_of_release = ", row[3], "\n")
 
-a= input("Enter Parameter: ")
+a= input("Enter actor name: ")
 j=cr.execute("select * from movies where actor='"+a+"'")
 for data in j:
     print(data[0])
