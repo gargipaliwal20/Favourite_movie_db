@@ -14,26 +14,37 @@ print("Records created successfully")
 
 
 cursor = db.execute("SELECT actor,actress,director,year_of_release from movies")
-for row in cursor:
-   print("Actor = ", row[0])
-   print("Actress = ", row[1])
-   print("Director = ", row[2])
-   print("Year_of_release = ", row[3], "\n")
+flag=1
+while flag==1:
+    for row in cursor:
+       print("Actor = ", row[0])
+       print("Actress = ", row[1])
+       print("Director = ", row[2])
+       print("Year_of_release = ", row[3], "\n")
 
-a= input("Enter your choice: ")
-if a=='actor':
-    c=input("Actor Name:")
-    j=cr.execute("select * from movies where actor='"+c+"'")
-    for data in j:
-        print(data[0])
-elif a=='actress':
-    d = input("Actress Name:")
-    k = cr.execute("select * from movies where actress='" +d+ "'")
-    for data in k:
-        print(data[0])
-elif a=='director':
-    e = input("Director Name: ")
-    l = cr.execute("select * from movies where director='" +e+ "'")
-    for data in l:
-        print(data[0])
+    a= input("Enter your choice: ")
+    if a=='actor':
+        c=input("Actor Name:")
+        j=cr.execute("select * from movies where actor='"+c+"'")
+        for data in j:
+            print(data[0])
+    elif a=='actress':
+        d = input("Actress Name:")
+        k = cr.execute("select * from movies where actress='" +d+ "'")
+        for data in k:
+            print(data[0])
+    elif a=='director':
+        e = input("Director Name: ")
+        l = cr.execute("select * from movies where director='" +e+ "'")
+        for data in l:
+            print(data[0])
+    con = input('Do you want to continue(Y/N)').lower()
+    if con == 'y':
+        flag == 1
+    elif con == 'n':
+        flag == 0
+        print('See you again!!')
+        db.execute("drop TABLE movies")
+        break
+    continue
 db.close()
